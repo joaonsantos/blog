@@ -8,8 +8,8 @@
     "react-hot-loader": "^4.12.20"
   },
   "scripts": {
-    "start": "webpack-dev-server --open --mode development",
-    "build": "webpack --mode development"
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -21,6 +21,7 @@
     "file-loader": "^6.0.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.10.3",
+    "webpack-merge": "^4.2.2"
   }
 }

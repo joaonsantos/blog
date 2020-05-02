@@ -1,23 +1,21 @@
 const path = require('path');
-const webpack = require("webpack");
 
 module.exports = {
   entry: './src/index.js',
-  mode: "development",
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: "babel-loader",
         }
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader"
+            loader: "html-loader",
           }
         ]
       },
@@ -29,7 +27,7 @@ module.exports = {
             loader: 'css-loader',
             options: {
               importLoaders: 1,
-              modules: true
+              modules: true,
             }
           }
         ]
@@ -41,18 +39,12 @@ module.exports = {
           outputPath: 'images',
         },
       },
-    ]
+    ],
   },
   resolve: { extensions: ["*", ".js", ".jsx"] },
   output: {
-    path: path.resolve(__dirname, "dist/"),
+    filename: "[name].bundle.js",
     publicPath: "/dist/",
-    filename: "bundle.js"
+    path: path.resolve(__dirname, "dist/"),
   },
-  devServer: {
-    contentBase: path.join(__dirname, "public/"),
-    port: 3000,
-    publicPath: "http://localhost:3000/dist/",
-    hotOnly: true
-  }
 };
