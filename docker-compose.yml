@@ -24,12 +24,10 @@ services:
     volumes:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
-      - web-root:/var/www/html
-    networks:
-      - backend
+      - web-root:/usr/share/nginx/html
     depends_on:
       - nginx-blog
-    command: certonly --webroot --webroot-path=/var/www/html --email joaopns05@gmail.com --agree-tos --no-eff-email --staging -d joaonsantos.dev  -d www.joaonsantos.dev
+    command: certonly --webroot --webroot-path=/usr/share/nginx/html --email joaopns05@gmail.com --agree-tos --no-eff-email --staging -d joaonsantos.dev  -d www.joaonsantos.dev
 
 volumes:
   certbot-etc:
