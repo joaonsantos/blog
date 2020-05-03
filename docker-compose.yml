@@ -26,7 +26,7 @@ services:
       - app
     depends_on:
       - blog-nginx
-    command: certonly --webroot --webroot-path=/usr/share/nginx/html --email joaopns05@gmail.com --staging --agree-tos --no-eff-email -d joaonsantos.dev  -d www.joaonsantos.dev
+    command: certonly --webroot --webroot-path=/usr/share/nginx/html --email joaopns05@gmail.com --force-renewal --agree-tos --no-eff-email -d joaonsantos.dev  -d www.joaonsantos.dev
 
 volumes:
   certbot-etc:
