@@ -1,22 +1,17 @@
 version: '3'
 
 services:
-  nginx-blog:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: nginx-blog
-    networks:
-      - app-network
+  blog-nginx:
+    image: blog-nginx
+    container_name: blog-nginx
     ports:
       - "80:80"
     volumes:
-      - ./nginx-conf:/etc/nginx/conf.d
       - web-root:/usr/share/nginx/html
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
     networks:
-      - backend
+      - app
 
   certbot:
     image: certbot/certbot
@@ -25,8 +20,10 @@ services:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
       - web-root:/usr/share/nginx/html
+    networks:
+      - app
     depends_on:
-      - nginx-blog
+      - blog-nginx
     command: certonly --webroot --webroot-path=/usr/share/nginx/html --email joaopns05@gmail.com --agree-tos --no-eff-email --staging -d joaonsantos.dev  -d www.joaonsantos.dev
 
 volumes:
@@ -35,4 +32,4 @@ volumes:
   web-root:
 
 networks:
-  backend:
+  app:
