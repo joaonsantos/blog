@@ -10,7 +10,7 @@
   "scripts": {
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "test": "eslint src/index.js"
+    "test": "eslint --ext .jsx,.js src/"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
