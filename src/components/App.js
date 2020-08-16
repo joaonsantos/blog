@@ -1,31 +1,31 @@
-import {hot} from 'react-hot-loader/root';
-import React, {Component} from "react";
+import { hot } from 'react-hot-loader/root'
+import React, { Component } from 'react'
 
-import styles from "../style/App.module.css"
-import Header from "./Header";
-import Aside from "./Aside";
-import Maintenance from "./Maintenance";
+import styles from '../style/App.module.css'
+import Header from './Header'
+import Aside from './Aside'
+import Maintenance from './Maintenance'
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       data: [],
       loaded: false,
-      placeholder: "Loading"
-    };
+      placeholder: 'Loading'
+    }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.setState(() => {
       return {
         data: [],
         loaded: true
-      };
-    });
+      }
+    })
   }
 
-  render() {
+  render () {
     return (
       <div className={styles.app}>
         <div className={styles.content}>
@@ -34,8 +34,8 @@ class App extends Component {
           <Maintenance/>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default hot(App);
+export default hot(App)
