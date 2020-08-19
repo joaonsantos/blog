@@ -1,0 +1,21 @@
+.content {
+    text-align: left;
+}
+
+.header {
+  margin-bottom:0.4375rem;
+}
+
+.title {
+  font-size:1.75rem;
+  margin-bottom:0.4375rem;
+  line-height: 1.1;
+}
+
+.small {
+  font-size: 80%;
+}
+
+.summary {
+  margin-bottom: 1.75rem;
+}

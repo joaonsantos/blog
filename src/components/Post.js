@@ -1,5 +1,7 @@
 import React from 'react'
 
+import styles from '../style/Post.module.css'
+
 class Post extends React.Component {
   constructor (props) {
     super(props)
@@ -17,12 +19,16 @@ class Post extends React.Component {
 
   render () {
     return (
-      <article>
-        <header>
-          <h3>{this.state.post.title}</h3>
-          <small>{`${this.state.post.date} - ${this.state.post.readTime} min read`}</small>
+      <article className={styles.content}>
+        <header className={styles.header}>
+          <h3 className={styles.title}>
+            {this.state.post.title}
+          </h3>
+          <small className={styles.small}>
+            {`${this.state.post.date} ⚫ ☕ ${this.state.post.readTime} min read`}
+          </small>
         </header>
-        <p>
+        <p className={styles.summary}>
           {this.state.post.summary}
         </p>
       </article>
