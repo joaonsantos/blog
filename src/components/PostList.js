@@ -14,7 +14,7 @@ class PostList extends React.Component {
   render () {
     return (
       this.props.posts.map((post, index) =>
-        <Post key={index} title={post.title} date={post.date} summary={post.summary} readTime={post.readTime}/>
+        <Post key={index} title={post.title} slug={post.slug} date={post.date} summary={post.summary} readTime={post.readTime}/>
       )
     )
   }
