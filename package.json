@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "history": "^5.0.0",
+    "markdown-to-jsx": "^7.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.20",
