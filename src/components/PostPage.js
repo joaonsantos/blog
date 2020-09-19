@@ -9,48 +9,26 @@ class PostPage extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      postContent: '',
       loaded: false,
       placeholder: 'Loading'
     }
   }
 
-  componentDidMount () {
+  async componentDidMount () {
+    const slug = this.props.slug
+    const res = await fetch('http://localhost:3000/api/v1/content/' + slug)
+    const postContentBlob = await res.blob()
+    const postContent = await postContentBlob.text()
     this.setState(() => {
       return {
-        data: [],
+        postContent: postContent,
         loaded: true
       }
     })
   }
 
   render () {
-    const postContent = `This is a test 👍
-
-    When people start learning React, they think it is a daunting task.
-
-The page for [React](https://reactjs.org) can be visited. But it also invites endless debates.
-
-**This is an important note!**
-
----
-
-## Don’t Get Distracted by Imaginary Problems
-
-This isn’t a popular opinion but someone needs to say it!
-
-
-## Recap
-
-Let’s recap these principles one more time:
-
-1. **item 1** The principle is number 1.
-2. **item 2** The principle shouldn't be number 1.
-3. **item 3** The principle is actually number 3.
-
-**It’s easy to list these.**
-
-A closing sentence is used here.`
-
     return (
       <div className={styles.app}>
         <div className={styles.content}>
@@ -59,7 +37,7 @@ A closing sentence is used here.`
             <article >
               <PostHeader/>
               <div className={styles.markdownContent}>
-                <Markdown>{postContent}</Markdown>
+                <Markdown>{this.state.postContent}</Markdown>
               </div>
             </article>
           </main>

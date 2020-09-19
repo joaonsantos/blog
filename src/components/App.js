@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  useParams
 } from 'react-router-dom'
 
 import styles from '../style/App.module.css'
@@ -16,38 +17,18 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      posts: [
-        {
-          title: 'This is a Post',
-          slug: 'this-is-a-post',
-          date: '16 August, 2020',
-          summary: 'This is a brief description of the post.',
-          readTime: '1'
-        },
-        {
-          title: 'This is Another Post',
-          slug: 'this-is-another-post',
-          date: '19 August, 2020',
-          summary: 'This is a brief description of the post',
-          readTime: '10'
-        },
-        {
-          title: 'And Another One',
-          slug: 'and-another-one',
-          date: '19 August, 2020',
-          summary: 'This is a brief description of the post',
-          readTime: '10'
-        }
-      ],
+      posts: [],
       loaded: false,
       placeholder: 'Loading'
     }
   }
 
-  componentDidMount () {
+  async componentDidMount () {
+    const res = await fetch('http://localhost:3000/api/v1/posts')
+    const posts = await res.json()
     this.setState(() => {
       return {
-        data: [],
+        posts: posts,
         loaded: true
       }
     })
@@ -59,7 +40,7 @@ class App extends Component {
         <Routes>
 
           <Route path="/post/:slug">
-            <PostPage />
+            <PostPageHook />
           </Route>
 
           <Route path="/">
@@ -78,6 +59,11 @@ class App extends Component {
       </Router>
     )
   }
+}
+
+function PostPageHook () {
+  const { slug } = useParams()
+  return <PostPage slug={slug}/>
 }
 
 export default hot(App)
