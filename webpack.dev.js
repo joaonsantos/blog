@@ -8,7 +8,8 @@ module.exports = merge(common, {
   devtool: 'inline-source-map',
   devServer: {
     contentBase: path.join(__dirname, 'public/'),
-    publicPath: 'http://localhost:3000/dist/',
+    historyApiFallback: true,
+    publicPath: '/dist/',
     port: 3000,
     proxy: {
       '/api': {
