@@ -17,7 +17,7 @@ class PostPage extends Component {
 
   async componentDidMount () {
     const slug = this.props.slug
-    const res = await fetch('http://localhost:3000/api/v1/content/' + slug)
+    const res = await fetch('http://127.0.0.1:3000/api/v1/content/' + slug)
     const postContentBlob = await res.blob()
     const postContent = await postContentBlob.text()
     this.setState(() => {
@@ -32,7 +32,9 @@ class PostPage extends Component {
     return (
       <div className={styles.app}>
         <div className={styles.content}>
-          <Header/>
+          <a href="/" className={styles.mainLink}>
+            <Header/>
+          </a>
           <main className={styles.mainContent}>
             <article >
               <PostHeader/>
@@ -41,6 +43,11 @@ class PostPage extends Component {
               </div>
             </article>
           </main>
+          <aside>
+            <a href="/" className={styles.mainLink}>
+              Go back
+            </a>
+          </aside>
         </div>
       </div>
     )
