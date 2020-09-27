@@ -1,4 +1,6 @@
+// webpack.config.js
 const path = require('path')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   module: {
@@ -59,6 +61,16 @@ module.exports = {
     ]
   },
   resolve: { extensions: ['*', '.js', '.jsx'] },
+  plugins: [
+    new Dotenv({
+      path: './env/.env.dev', // load this now instead of the ones in '.env'
+      safe: false, // load '.env.example' to verify the '.env' variables are all set. Can also be a string to a different file.
+      allowEmptyValues: false, // allow empty variables (e.g. `FOO=`) (treat it as empty string, rather than missing)
+      systemvars: true, // load all the predefined 'process.env' variables which will trump anything local per dotenv specs.
+      silent: true, // hide any errors
+      defaults: true // load '.env.defaults' as the default values if empty.
+    })
+  ],
   output: {
     filename: '[name].bundle.js',
     publicPath: '/dist/',

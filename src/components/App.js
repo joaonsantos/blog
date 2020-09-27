@@ -24,7 +24,8 @@ class App extends Component {
   }
 
   async componentDidMount () {
-    const res = await fetch('http://127.0.0.1:3000/api/v1/posts')
+    const baseUrl = process.env.BASE_URL
+    const res = await fetch(`${baseUrl}/api/v1/posts`)
     const posts = await res.json()
     this.setState(() => {
       return {

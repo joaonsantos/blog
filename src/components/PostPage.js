@@ -16,8 +16,9 @@ class PostPage extends Component {
   }
 
   async componentDidMount () {
+    const baseUrl = process.env.BASE_URL
     const slug = this.props.slug
-    const res = await fetch('http://127.0.0.1:3000/api/v1/content/' + slug)
+    const res = await fetch(`${baseUrl}/api/v1/content/${slug}`)
     const postContentBlob = await res.blob()
     const postContent = await postContentBlob.text()
     this.setState(() => {
