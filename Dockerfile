@@ -1,12 +1,15 @@
 FROM node:alpine as builder
 
 WORKDIR /app
+
 COPY package.json package-lock.json ./
 RUN npm ci --silent
 
-COPY webpack.* ./
-COPY src public env ./
-COPY .env.defaults ./
+COPY webpack.common.js webpack.dev.js webpack.prod.js /app/
+COPY env /app/env
+COPY public /app/public
+COPY src /app/src
+COPY .env.defaults /app/
 RUN npm run build
 
 FROM nginx:mainline
