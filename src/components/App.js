@@ -12,6 +12,7 @@ import Header from './Header'
 import Aside from './Aside'
 import PostList from './PostList.js'
 import PostPage from './PostPage.js'
+import { formatPostsDate } from '../utils/utils.js'
 
 class App extends Component {
   constructor (props) {
@@ -27,9 +28,10 @@ class App extends Component {
     const baseUrl = process.env.BASE_URL
     const res = await fetch(`${baseUrl}/api/v1/posts`)
     const posts = await res.json()
+
     this.setState(() => {
       return {
-        posts: posts,
+        posts: formatPostsDate(posts, 'dateModified'),
         loaded: true
       }
     })
