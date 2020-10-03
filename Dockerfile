@@ -9,7 +9,6 @@ COPY webpack.common.js webpack.dev.js webpack.prod.js /app/
 COPY env /app/env
 COPY public /app/public
 COPY src /app/src
-COPY .env.defaults /app/
 RUN npm run build
 
 FROM nginx:mainline
