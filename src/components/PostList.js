@@ -3,14 +3,6 @@ import React from 'react'
 import Post from './Post.js'
 
 class PostList extends React.Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      loading: []
-    }
-  }
-
   render () {
     return (
       this.props.posts.map((post, index) =>
