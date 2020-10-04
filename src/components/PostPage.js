@@ -7,37 +7,49 @@ import PostHeader from './PostHeader.js'
 import PostContent from './PostContent.js'
 import { formatPostDate } from '../utils/utils.js'
 
+async function fetchCompletePost (slug) {
+  const baseUrl = process.env.BASE_URL
+  const [postInfoResponse, postContentResponse] = await Promise.all([
+    fetch(`${baseUrl}/api/v1/post/${slug}`),
+    fetch(`${baseUrl}/api/v1/content/${slug}`)
+  ])
+
+  const [post] = await postInfoResponse.json()
+  const postContent = await postContentResponse.text()
+  const postInfo = formatPostDate(post, 'dateModified')
+
+  return {
+    postInfo,
+    postContent
+  }
+}
+
 class PostPage extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      loaded: false,
+      isLoading: false,
       placeholder: 'Loading',
       postInfo: {},
       postContent: ''
     }
   }
 
-  async componentDidMount () {
-    const baseUrl = process.env.BASE_URL
-    const slug = this.props.slug
-    let res = await fetch(`${baseUrl}/api/v1/post/${slug}`)
-    const [post] = await res.json()
-    const postInfo = formatPostDate(post, 'dateModified')
-
-    res = await fetch(`${baseUrl}/api/v1/content/${slug}`)
-    const postContentBlob = await res.blob()
-    const postContent = await postContentBlob.text()
-    this.setState(() => {
-      return {
-        loaded: true,
-        postInfo: postInfo,
-        postContent: postContent
-      }
+  componentDidMount () {
+    this.setState({ isLoading: true })
+    fetchCompletePost(this.props.slug).then(({ postInfo, postContent }) => {
+      this.setState(() => {
+        return {
+          postInfo: postInfo,
+          postContent: postContent,
+          isLoading: false
+        }
+      })
     })
   }
 
   render () {
+    console.log(this.state)
     return (
       <div className={styles.app}>
         <div className={styles.content}>

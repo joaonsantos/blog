@@ -19,12 +19,14 @@ class App extends Component {
     super(props)
     this.state = {
       posts: [],
-      loaded: false,
+      isLoading: false,
       placeholder: 'Loading'
     }
   }
 
   async componentDidMount () {
+    this.setState({ isLoading: true })
+
     const baseUrl = process.env.BASE_URL
     const res = await fetch(`${baseUrl}/api/v1/posts`)
     const posts = await res.json()
@@ -32,7 +34,7 @@ class App extends Component {
     this.setState(() => {
       return {
         posts: formatPostsDate(posts, 'dateModified'),
-        loaded: true
+        isLoading: false
       }
     })
   }
