@@ -4,16 +4,17 @@ import Markdown from 'markdown-to-jsx'
 import styles from '../style/PostPage.module.css'
 import Header from './Header.js'
 import PostHeader from './PostHeader.js'
+import PostContent from './PostContent.js'
 import { formatPostDate } from '../utils/utils.js'
 
 class PostPage extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      post: {},
-      postContent: '',
       loaded: false,
-      placeholder: 'Loading'
+      placeholder: 'Loading',
+      postInfo: {},
+      postContent: ''
     }
   }
 
@@ -22,15 +23,16 @@ class PostPage extends Component {
     const slug = this.props.slug
     let res = await fetch(`${baseUrl}/api/v1/post/${slug}`)
     const [post] = await res.json()
+    const postInfo = formatPostDate(post, 'dateModified')
 
     res = await fetch(`${baseUrl}/api/v1/content/${slug}`)
     const postContentBlob = await res.blob()
     const postContent = await postContentBlob.text()
     this.setState(() => {
       return {
-        post: formatPostDate(post, 'dateModified'),
-        postContent: postContent,
-        loaded: true
+        loaded: true,
+        postInfo: postInfo,
+        postContent: postContent
       }
     })
   }
@@ -44,10 +46,8 @@ class PostPage extends Component {
           </a>
           <main className={styles.mainContent}>
             <article >
-              <PostHeader post={this.state.post}/>
-              <div className={styles.markdownContent}>
-                <Markdown>{this.state.postContent}</Markdown>
-              </div>
+              <PostHeader postInfo={this.state.postInfo}/>
+              <PostContent postContent={this.state.postContent}/>
             </article>
           </main>
           <aside>
