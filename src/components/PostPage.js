@@ -49,7 +49,6 @@ class PostPage extends Component {
   }
 
   render () {
-    console.log(this.state)
     return (
       <div className={styles.app}>
         <div className={styles.content}>
