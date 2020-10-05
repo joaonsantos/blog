@@ -10,7 +10,13 @@ class Aside extends React.Component {
       <aside>
         <div className={styles.content}>
           <img className={styles.profile} src={profileImg} alt="João Santos"/>
-          <p className={styles.description}>{blogConfigs.description}</p>
+          <div className={styles.description}>
+            <p>
+              {blogConfigs.intro}
+              <br/>
+              {blogConfigs.description}
+            </p>
+          </div>
         </div>
       </aside>
     )

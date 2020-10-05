@@ -7,15 +7,22 @@
 }
 
 .title {
-  font-size:1.75rem;
+  font-size:2rem;
+  font-weight: 700;
   margin-bottom:0.4375rem;
   line-height: 1.1;
 }
 
+.title > a {
+  color: inherit;
+}
+
 .small {
   font-size: 80%;
+  font-weight: 500;
 }
 
 .summary {
+  font-size:1.10rem;
   margin-bottom: 1.75rem;
 }

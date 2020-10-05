@@ -62,7 +62,7 @@ class PostPage extends Component {
             </article>
           </main>
           <aside>
-            <a href="/" className={styles.mainLink}>
+            <a href="/" className={styles.bottomLink}>
               Go back
             </a>
           </aside>
