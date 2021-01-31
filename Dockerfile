@@ -7,15 +7,13 @@ RUN npm ci --silent
 
 COPY webpack.common.js webpack.dev.js webpack.prod.js /app/
 COPY env /app/env
-COPY public /app/public
 COPY src /app/src
 RUN npm run build
 
 FROM nginx:mainline
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /app/public /usr/share/nginx/html
-COPY --from=builder /app/dist /usr/share/nginx/html/dist
+COPY --from=builder /app/dist /usr/share/nginx/html/
 
 EXPOSE 80 443
 CMD ["nginx", "-g", "daemon off;"]
