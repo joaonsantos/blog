@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root'
 import React, { Component } from 'react'
 import {
   BrowserRouter as Router,
@@ -71,4 +70,4 @@ function PostPageHook () {
   return <PostPage slug={slug}/>
 }
 
-export default hot(App)
+export default App
