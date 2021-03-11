@@ -10,7 +10,7 @@ class PostHeader extends React.Component {
           {this.props.postInfo.title}
         </h1>
         <small className={styles.small}>
-          {`${this.props.postInfo.date} ⚫ ☕ ${this.props.postInfo.readTime} min read`}
+          {`${this.props.postInfo.date}  ☕ ${this.props.postInfo.readTime} min read`}
         </small>
       </header>
     )

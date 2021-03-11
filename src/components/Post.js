@@ -13,7 +13,7 @@ class Post extends React.Component {
             <Link to={'post/' + this.props.slug}> {this.props.title} </Link>
           </h3>
           <small className={styles.small}>
-            {`${this.props.date} ⚫ ☕ ${this.props.readTime} min read`}
+            {`${this.props.date}  ☕ ${this.props.readTime} min read`}
           </small>
         </header>
         <p className={styles.summary}>
