@@ -1,4 +1,4 @@
-baseURL: "https://blog.joaonsantos.dev/"
+baseURL: "https://joaonsantos.dev/"
 title: joaonsantos blog
 paginate: 5
 theme: PaperMod
@@ -15,7 +15,7 @@ minify:
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: joaonsantos blog
-  description: "Blog of description"
+  description: "Personal blog"
   keywords: [Blog, Portfolio, PaperMod]
   author: Me
   # author: ["Me", "You"] # multiple authors
