@@ -1,11 +1,10 @@
 ---
 title: "Thoughts on Go Generics"
-date: 2022-06-13T13:18:00+01:00
+date: 2022-02-10T13:18:00+01:00
 # weight: 1
 # aliases: ["/first"]
 tags: ["first"]
-author: "João Santos"
-# author: ["Me", "You"] # multiple authors
+author: "Me"
 showToc: true
 TocOpen: false
 draft: false

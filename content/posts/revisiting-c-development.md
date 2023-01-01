@@ -1,11 +1,10 @@
 ---
 title: "Revisiting C Development"
-date: 2022-06-13T13:15:44+01:00
+date: 2021-12-27T19:26:02+01:00
 # weight: 1
 # aliases: ["/first"]
 tags: ["c"]
-author: "João Santos"
-# author: ["Me", "You"] # multiple authors
+author: "Me"
 showToc: true
 TocOpen: false
 draft: false

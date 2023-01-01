@@ -1,11 +1,10 @@
 ---
 title: "Programming Is More Than Syntax"
-date: 2022-06-13T13:08:26+01:00
+date: 2021-06-16T18:02:26+01:00
 # weight: 1
 # aliases: ["/first"]
 tags: ["opinion"]
-author: "João Santos"
-# author: ["Me", "You"] # multiple authors
+author: "Me"
 showToc: true
 TocOpen: false
 draft: false
